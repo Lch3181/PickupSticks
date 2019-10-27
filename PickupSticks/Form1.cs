@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace PickupSticks
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
-        public Form1()
+        public Main()
         {
             InitializeComponent();
+        }
+
+        private void SettingsLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StartButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
