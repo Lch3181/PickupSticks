@@ -136,6 +136,7 @@
             // 
             // PickUpAmountTextbox
             // 
+            this.PickUpAmountTextbox.Enabled = false;
             this.PickUpAmountTextbox.Location = new System.Drawing.Point(283, 147);
             this.PickUpAmountTextbox.Name = "PickUpAmountTextbox";
             this.PickUpAmountTextbox.Size = new System.Drawing.Size(50, 20);
@@ -144,12 +145,14 @@
             // 
             // PickUpButton
             // 
+            this.PickUpButton.Enabled = false;
             this.PickUpButton.Location = new System.Drawing.Point(339, 145);
             this.PickUpButton.Name = "PickUpButton";
             this.PickUpButton.Size = new System.Drawing.Size(75, 23);
             this.PickUpButton.TabIndex = 13;
             this.PickUpButton.Text = "Pick up";
             this.PickUpButton.UseVisualStyleBackColor = true;
+            this.PickUpButton.Click += new System.EventHandler(this.PickUpButton_Click);
             // 
             // PickUpAmountLabel
             // 
@@ -164,7 +167,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 253);
+            this.ClientSize = new System.Drawing.Size(416, 224);
             this.Controls.Add(this.PickUpAmountLabel);
             this.Controls.Add(this.PickUpButton);
             this.Controls.Add(this.PickUpAmountTextbox);
