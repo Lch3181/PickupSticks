@@ -49,6 +49,7 @@ namespace PickupSticks
 
             CurrentPlayerTurn = 1;
             CurrentNumberOfSticks = MaxNumberOfSticks;
+
             UpdateGameUI();
 
             //disable settings
@@ -102,9 +103,8 @@ namespace PickupSticks
             if (CurrentNumberOfSticks <= 0)
             {
                 //disable game
-                CurrentSticksLabel.Text = "0";
                 SetGameControlsVisibility(false);
-                MessageBox.Show(CurrentPlayerLabel.Text + " Wins!");
+                DisplayWinner();
             }
         }
 
@@ -133,6 +133,12 @@ namespace PickupSticks
         {
             CurrentPlayerLabel.Text = "Player " + Convert.ToString(CurrentPlayerTurn);
             CurrentSticksLabel.Text = Convert.ToString(CurrentNumberOfSticks);
+        }
+
+        private void DisplayWinner()
+        {
+            CurrentSticksLabel.Text = "0";
+            MessageBox.Show(CurrentPlayerLabel.Text + " Wins!");
         }
     }
 }
