@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PickupSticks
@@ -13,98 +6,133 @@ namespace PickupSticks
     public partial class Main : Form
     {
 
-        bool Start;
-        int TotalPlayers;
-        int TotalSticks;
-        int PickupRange;
+        //Game parameters
+        int TotalNumberOfPlayers;
+        int MaxNumberOfSticks;
+        int PlayerPickupRange;
 
-        int CurrentPlayer;
-        int CurrentSticks;
+        //Game status
+        bool GameHasStarted;
+        int CurrentPlayerTurn;
+        int CurrentNumberOfSticks;
 
         public Main()
         {
             InitializeComponent();
         }
-        
-        private void SettingsLabel_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-            Start = !Start;
-
-            if(Start)
+            if(!GameHasStarted)
             {
-                //init stat
-                TotalPlayers = Convert.ToInt16(TotalPlayersTextbox.Text);
-                TotalSticks = Convert.ToInt16(TotalSticksTextbox.Text);
-                PickupRange = Convert.ToInt16(PickUpRangeTextbox.Text);
-                CurrentPlayer = 1;
-                CurrentSticks = TotalSticks;
-                CurrentPlayerLabel.Text = "Player " + Convert.ToString(CurrentPlayer);
-                CurrentSticksLabel.Text = Convert.ToString(CurrentSticks);
-
-                //disable settings
-                TotalPlayersTextbox.Enabled = false;
-                TotalSticksTextbox.Enabled = false;
-                PickUpRangeTextbox.Enabled = false;
-
-                //enable game
-                PickUpAmountTextbox.Enabled = true;
-                PickUpButton.Enabled = true;
-                StartButton.Text = "Restart";
+                StartGame();
             }
             else
             {
-                //enable settings
-                TotalPlayersTextbox.Enabled = true;
-                TotalSticksTextbox.Enabled = true;
-                PickUpRangeTextbox.Enabled = true;
-
-                //disable game
-                PickUpAmountTextbox.Enabled = false;
-                PickUpButton.Enabled = false;
-                StartButton.Text = "Start";
+                RestartGame();
             }
         }
 
         private void PickUpButton_Click(object sender, EventArgs e)
         {
             //game progress
-            if(CurrentSticks > 0)
+            MakeMove();
+
+            //check win status
+            CheckWinStatus();
+        }
+
+        private void StartGame()
+        {
+            //init stat
+            ExtractGameParameters();
+
+            CurrentPlayerTurn = 1;
+            CurrentNumberOfSticks = MaxNumberOfSticks;
+            UpdateGameUI();
+
+            //disable settings
+            SetGameSettingsVisibility(false);
+
+            //enable game
+            SetGameControlsVisibility(true);
+
+            GameHasStarted = true;
+        }
+
+        private void RestartGame()
+        {
+            //enable settings
+            SetGameSettingsVisibility(true);
+
+            //disable game
+            SetGameControlsVisibility(false);
+
+            GameHasStarted = false;
+        }
+
+        private void MakeMove()
+        {
+            if (CurrentNumberOfSticks > 0)
             {
-                if(Convert.ToInt16(PickUpAmountTextbox.Text) <= PickupRange && Convert.ToInt16(PickUpAmountTextbox.Text) > 0)
+                int pickUpAmount = Convert.ToInt16(PickUpAmountTextbox.Text);
+
+                if (pickUpAmount <= PlayerPickupRange && pickUpAmount > 0)
                 {
                     //pick up sticks
-                    CurrentSticks -= Convert.ToInt16(PickUpAmountTextbox.Text);
-                    CurrentSticksLabel.Text = Convert.ToString(CurrentSticks);
+                    CurrentNumberOfSticks -= pickUpAmount;
 
                     //next player
-                    if (CurrentPlayer < TotalPlayers)
+                    if (CurrentPlayerTurn < TotalNumberOfPlayers)
                     {
-                        CurrentPlayer++;
+                        CurrentPlayerTurn++;
                     }
                     else
                     {
-                        CurrentPlayer = 1;
+                        CurrentPlayerTurn = 1;
                     }
-                    CurrentPlayerLabel.Text = "Player " + Convert.ToString(CurrentPlayer);
+
+                    UpdateGameUI();
                 }
-
             }
+        }
 
-
-            //check win status
-            if(CurrentSticks <= 0)
+        private void CheckWinStatus()
+        {
+            if (CurrentNumberOfSticks <= 0)
             {
                 //disable game
                 CurrentSticksLabel.Text = "0";
-                PickUpAmountTextbox.Enabled = false;
-                PickUpButton.Enabled = false;
+                SetGameControlsVisibility(false);
                 MessageBox.Show(CurrentPlayerLabel.Text + " Wins!");
             }
+        }
+
+        private void SetGameSettingsVisibility(bool status)
+        {
+            TotalPlayersTextbox.Enabled = status;
+            TotalSticksTextbox.Enabled = status;
+            PickUpRangeTextbox.Enabled = status;
+        }
+
+        private void SetGameControlsVisibility(bool status)
+        {
+            PickUpAmountTextbox.Enabled = status;
+            PickUpButton.Enabled = status;
+            StartButton.Text = (status) ? "Restart" : "Start";
+        }
+
+        private void ExtractGameParameters()
+        {
+            TotalNumberOfPlayers = Convert.ToInt16(TotalPlayersTextbox.Text);
+            MaxNumberOfSticks = Convert.ToInt16(TotalSticksTextbox.Text);
+            PlayerPickupRange = Convert.ToInt16(PickUpRangeTextbox.Text);
+        }
+
+        private void UpdateGameUI()
+        {
+            CurrentPlayerLabel.Text = "Player " + Convert.ToString(CurrentPlayerTurn);
+            CurrentSticksLabel.Text = Convert.ToString(CurrentNumberOfSticks);
         }
     }
 }

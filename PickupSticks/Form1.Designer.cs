@@ -46,39 +46,39 @@
             // SettingsLabel
             // 
             this.SettingsLabel.AutoSize = true;
-            this.SettingsLabel.Location = new System.Drawing.Point(12, 59);
+            this.SettingsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SettingsLabel.Location = new System.Drawing.Point(9, 65);
             this.SettingsLabel.Name = "SettingsLabel";
-            this.SettingsLabel.Size = new System.Drawing.Size(48, 13);
+            this.SettingsLabel.Size = new System.Drawing.Size(72, 17);
             this.SettingsLabel.TabIndex = 0;
             this.SettingsLabel.Text = "Settings:";
-            this.SettingsLabel.Click += new System.EventHandler(this.SettingsLabel_Click);
             // 
             // TotalSticksLabel
             // 
             this.TotalSticksLabel.AutoSize = true;
-            this.TotalSticksLabel.Location = new System.Drawing.Point(12, 137);
+            this.TotalSticksLabel.Location = new System.Drawing.Point(12, 126);
             this.TotalSticksLabel.Name = "TotalSticksLabel";
-            this.TotalSticksLabel.Size = new System.Drawing.Size(63, 13);
+            this.TotalSticksLabel.Size = new System.Drawing.Size(66, 13);
             this.TotalSticksLabel.TabIndex = 1;
-            this.TotalSticksLabel.Text = "Total Sticks";
+            this.TotalSticksLabel.Text = "Total Sticks:";
             // 
             // PickUpRangeLabel
             // 
             this.PickUpRangeLabel.AutoSize = true;
-            this.PickUpRangeLabel.Location = new System.Drawing.Point(12, 182);
+            this.PickUpRangeLabel.Location = new System.Drawing.Point(12, 157);
             this.PickUpRangeLabel.Name = "PickUpRangeLabel";
-            this.PickUpRangeLabel.Size = new System.Drawing.Size(80, 13);
+            this.PickUpRangeLabel.Size = new System.Drawing.Size(83, 13);
             this.PickUpRangeLabel.TabIndex = 2;
-            this.PickUpRangeLabel.Text = "Pick Up Range";
+            this.PickUpRangeLabel.Text = "Pick Up Range:";
             // 
             // TotalPlayersLabel
             // 
             this.TotalPlayersLabel.AutoSize = true;
             this.TotalPlayersLabel.Location = new System.Drawing.Point(12, 95);
             this.TotalPlayersLabel.Name = "TotalPlayersLabel";
-            this.TotalPlayersLabel.Size = new System.Drawing.Size(68, 13);
+            this.TotalPlayersLabel.Size = new System.Drawing.Size(71, 13);
             this.TotalPlayersLabel.TabIndex = 3;
-            this.TotalPlayersLabel.Text = "Total Players";
+            this.TotalPlayersLabel.Text = "Total Players:";
             // 
             // TotalPlayersTextbox
             // 
@@ -90,7 +90,7 @@
             // 
             // TotalSticksTextbox
             // 
-            this.TotalSticksTextbox.Location = new System.Drawing.Point(98, 135);
+            this.TotalSticksTextbox.Location = new System.Drawing.Point(98, 124);
             this.TotalSticksTextbox.Name = "TotalSticksTextbox";
             this.TotalSticksTextbox.Size = new System.Drawing.Size(50, 20);
             this.TotalSticksTextbox.TabIndex = 6;
@@ -98,7 +98,7 @@
             // 
             // PickUpRangeTextbox
             // 
-            this.PickUpRangeTextbox.Location = new System.Drawing.Point(98, 179);
+            this.PickUpRangeTextbox.Location = new System.Drawing.Point(98, 154);
             this.PickUpRangeTextbox.Name = "PickUpRangeTextbox";
             this.PickUpRangeTextbox.Size = new System.Drawing.Size(50, 20);
             this.PickUpRangeTextbox.TabIndex = 7;
@@ -118,7 +118,7 @@
             // 
             this.CurrentSticksLabel.AutoSize = true;
             this.CurrentSticksLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.CurrentSticksLabel.Location = new System.Drawing.Point(275, 75);
+            this.CurrentSticksLabel.Location = new System.Drawing.Point(271, 69);
             this.CurrentSticksLabel.Name = "CurrentSticksLabel";
             this.CurrentSticksLabel.Size = new System.Drawing.Size(64, 46);
             this.CurrentSticksLabel.TabIndex = 9;
@@ -128,7 +128,7 @@
             // 
             this.StartButton.Location = new System.Drawing.Point(12, 12);
             this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(75, 23);
+            this.StartButton.Size = new System.Drawing.Size(79, 34);
             this.StartButton.TabIndex = 10;
             this.StartButton.Text = "Start";
             this.StartButton.UseVisualStyleBackColor = true;
@@ -137,16 +137,19 @@
             // PickUpAmountTextbox
             // 
             this.PickUpAmountTextbox.Enabled = false;
-            this.PickUpAmountTextbox.Location = new System.Drawing.Point(283, 147);
+            this.PickUpAmountTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PickUpAmountTextbox.Location = new System.Drawing.Point(279, 145);
             this.PickUpAmountTextbox.Name = "PickUpAmountTextbox";
-            this.PickUpAmountTextbox.Size = new System.Drawing.Size(50, 20);
+            this.PickUpAmountTextbox.Size = new System.Drawing.Size(50, 26);
             this.PickUpAmountTextbox.TabIndex = 12;
             this.PickUpAmountTextbox.Text = "1";
+            this.PickUpAmountTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // PickUpButton
             // 
             this.PickUpButton.Enabled = false;
-            this.PickUpButton.Location = new System.Drawing.Point(339, 145);
+            this.PickUpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PickUpButton.Location = new System.Drawing.Point(335, 148);
             this.PickUpButton.Name = "PickUpButton";
             this.PickUpButton.Size = new System.Drawing.Size(75, 23);
             this.PickUpButton.TabIndex = 13;
@@ -157,11 +160,11 @@
             // PickUpAmountLabel
             // 
             this.PickUpAmountLabel.AutoSize = true;
-            this.PickUpAmountLabel.Location = new System.Drawing.Point(223, 150);
+            this.PickUpAmountLabel.Location = new System.Drawing.Point(219, 153);
             this.PickUpAmountLabel.Name = "PickUpAmountLabel";
-            this.PickUpAmountLabel.Size = new System.Drawing.Size(54, 13);
+            this.PickUpAmountLabel.Size = new System.Drawing.Size(49, 13);
             this.PickUpAmountLabel.TabIndex = 14;
-            this.PickUpAmountLabel.Text = "Amounts: ";
+            this.PickUpAmountLabel.Text = "Amount: ";
             // 
             // Main
             // 
